@@ -57,14 +57,14 @@ class Adapter(val list: MutableList<MainItem>) : RecyclerView.Adapter<>(), StaLa
             return list.size
         }
         override fun isStaticItem(position: Int): Boolean {
-        	//Return which position need fix to screen top
-        	//For example
+          //Return which position need fix to screen top
+          //For example
             return position == 0
         }
 
         override fun isNeedNotifyWhenAppear(itemView: View?, viewType: Int, position: Int): Boolean {
-        	//If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.
-          	//Otherwise return false,and the itemView stays the same shape.
+          //If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.
+          //Otherwise return false,and the itemView stays the same shape.
             return false
         }
     }
