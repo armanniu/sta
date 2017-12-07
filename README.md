@@ -52,22 +52,22 @@ override fun onCreate(savedInstanceState: Bundle?) {
 In Adapter
 
 ~~~kotlin
-class Adapter(val list: MutableList<MainItem>) : RecyclerView.Adapter<>(), StaLayout.StaticAdapter {
-        override fun getItemCount(): Int {
-            return list.size
-        }
-        override fun isStaticItem(position: Int): Boolean {
-            //Return which position need fix to screen top
-            //For example
-            return position == 0
-        }
-
-        override fun isNeedNotifyWhenAppear(itemView: View?, viewType: Int, position: Int): Boolean {
-            //If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.
-            //Otherwise return false,and the itemView stays the same shape.
-            return false
-        }
-    }
+class Adapter : RecyclerView.Adapter<>(), StaLayout.StaticAdapter {
+  
+  ...
+  
+  override fun isStaticItem(position: Int): Boolean {
+    //Return which position need fix to screen top
+    //For example
+    return position == 0
+  }
+  
+  override fun isNeedNotifyWhenAppear(itemView: View?, viewType: Int, position: Int): Boolean {
+    //If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.
+    //Otherwise return false,and the itemView stays the same shape.
+    return false
+  }
+}
 ~~~
 
 
