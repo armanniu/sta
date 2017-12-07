@@ -63,7 +63,8 @@ class Adapter(val list: MutableList<MainItem>) : RecyclerView.Adapter<>(), StaLa
         }
 
         override fun isNeedNotifyWhenAppear(itemView: View?, viewType: Int, position: Int): Boolean {
-        	//If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.Otherwise return false,and the itemView stays the same shape.
+        	//If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.
+          	//Otherwise return false,and the itemView stays the same shape.
             return false
         }
     }
