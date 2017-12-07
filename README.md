@@ -19,7 +19,7 @@ This interface have two method
 
 **boolean isStaticItem(int position)** 
 
-This method decide the item which in the position need to fix to the screen to.When it return true,then the StaLayout will get the Adapter which be set in a RecyclerView,and call the method `onCreateViewHolder `and `onBindViewHolder` of the Adapter to get a item and add it.Otherwise,the position will be jumped.
+This method decide the item which in the position need to fix to the screen top.When it return true,then the StaLayout will get the Adapter which be set in a RecyclerView,and call the method `onCreateViewHolder `and `onBindViewHolder` of the Adapter to get a item and add it.Otherwise,the position will be jumped.
 
 **isNeedNotifyWhenAppear(View itemView, int viewType, int position)**
 
