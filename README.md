@@ -12,6 +12,65 @@
 4. find StaLayout and bind the RecyclerView to it
 
 
+**Example:**
+
+In activity_main.xml
+
+~~~xml
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.arman.demo.MainActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.arman.sta.StaLayout
+        android:id="@+id/sta_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
+~~~
+
+In MainActivity.kt
+
+~~~kotlin
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    setContentView(R.layout.activity_main)
+    rv_main.layoutManager = LinearLayoutManager(this)
+    ...
+    rv_main.adapter = Adapter(list)
+    sta_main.bindRecyclerView(rv_main)
+}
+~~~
+
+In Adapter
+
+~~~kotlin
+class Adapter(val list: MutableList<MainItem>) : RecyclerView.Adapter<>(), StaLayout.StaticAdapter {
+        override fun getItemCount(): Int {
+            return list.size
+        }
+        override fun isStaticItem(position: Int): Boolean {
+        	//Return which position need fix to screen top
+        	//For example
+            return position == 0
+        }
+
+        override fun isNeedNotifyWhenAppear(itemView: View?, viewType: Int, position: Int): Boolean {
+        	//If itemView status changed,return true,then, StaLayout will use this adapter to bind data to the itemView.Otherwise return false,and the itemView stays the same shape.
+            return false
+        }
+    }
+~~~
+
+
+
 
 ## StaLayout.StaticAdapter
 
